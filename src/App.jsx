@@ -22,9 +22,10 @@ const PublicRoute = ({ children }) => {
 export default function App() {
       const { token, fetchMe, loading } = useAuthStore();
 
+      // Call fetchMe whenever token becomes available (rehydration)
       useEffect(() => {
             if (token) fetchMe();
-      }, []);
+      }, [token, fetchMe]);
 
       if (loading) return (
             <div className="min-h-screen bg-zinc-950 flex items-center justify-center">

@@ -7,7 +7,8 @@ const api = axios.create({
 
 // Attach token to every request
 api.interceptors.request.use((config) => {
-      const token = localStorage.getItem("token");
+      const raw = localStorage.getItem("auth-store");
+      const token = raw ? JSON.parse(raw)?.state?.token : null;
       if (token) config.headers.Authorization = `Bearer ${token}`;
       return config;
 });

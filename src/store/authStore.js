@@ -15,7 +15,6 @@ const useAuthStore = create(
                         try {
                               const res = await api.post("/auth/register", data);
                               set({ user: res.data.user, token: res.data.token, loading: false });
-                              localStorage.setItem("token", res.data.token);
                               toast.success("Account created successfully!");
                               return true;
                         } catch (err) {
@@ -30,7 +29,6 @@ const useAuthStore = create(
                         try {
                               const res = await api.post("/auth/login", data);
                               set({ user: res.data.user, token: res.data.token, loading: false });
-                              localStorage.setItem("token", res.data.token);
                               toast.success(`Welcome back, ${res.data.user.name}!`);
                               return true;
                         } catch (err) {
@@ -42,7 +40,6 @@ const useAuthStore = create(
 
                   logout: () => {
                         set({ user: null, token: null });
-                        localStorage.removeItem("token");
                         toast.success("Logged out successfully");
                   },
 
