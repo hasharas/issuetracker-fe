@@ -30,7 +30,6 @@ cd ../frontend && npm install
 ### 2. Configure Backend
 
 Edit `backend/.env`:
-(allredy push that be to)
 
 ```env
 PORT=5000
